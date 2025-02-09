@@ -1,15 +1,7 @@
 DROP DATAbase if EXISTS `bancotimes` ;
 CREATE DATABASE  IF NOT EXISTS `bancotimes` ;
 USE `bancotimes`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
---
--- Host: 127.0.0.1    Database: bancotimes
--- ------------------------------------------------------
--- Server version	8.0.11
 
---
--- Table structure for table `times`
---
 
 DROP TABLE IF EXISTS `times`;
 
@@ -21,9 +13,6 @@ CREATE TABLE `times` (
   PRIMARY KEY (`idtimes`)
 )  AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `times`
---
 
 LOCK TABLES `times` WRITE;
 ALTER TABLE `times` DISABLE KEYS ;
@@ -31,9 +20,6 @@ INSERT INTO `times` VALUES (1,'Bahia',2000000,1931),(2,'Flamengo',400000000,1890
  ALTER TABLE `times` ENABLE KEYS ;
 UNLOCK TABLES;
 
-
-
--- Dump completed on 2020-07-24 22:13:26
 
 --
 -- Table structure for table `jogadores`
@@ -52,10 +38,6 @@ CREATE TABLE `jogadores` (
   CONSTRAINT `jogadores_ibfk_1` FOREIGN KEY (`idtimes`) REFERENCES `times` (`idtimes`)
 )  AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
-
---
--- Dumping data for table `jogadores`
---
 
 LOCK TABLES `jogadores` WRITE;
  ALTER TABLE `jogadores` DISABLE KEYS ;
