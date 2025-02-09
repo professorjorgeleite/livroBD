@@ -42,90 +42,89 @@ INSERT INTO atendentes (idatendentes, nomeatendente, codigo) VALUES
 
 -- --------------------------------------------------------
 
---
--- Estrutura da tabela itens
+-- Estrutura da tabela tiposocios
 --
 
-CREATE TABLE itens (
-  idpedidos int(10) UNSIGNED NOT NULL,
-  idpizzas int(11) NOT NULL,
-  quantidade int(11) DEFAULT NULL,
-  tipo int(11) DEFAULT '1'
+CREATE TABLE tiposocios (
+  idtiposocio int(11) NOT NULL,
+  tipo_socio varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela itens
+-- Extraindo dados da tabela tiposocios
 --
 
-INSERT INTO itens (idpedidos, idpizzas, quantidade, tipo) VALUES
-(1, 1, 2, 1),
-(1, 3, 4, 2),
-(1, 4, 3, 1),
-(1, 5, 5, 1),
-(1, 6, 3, 1),
-(1, 8, 3, 1),
-(2, 1, 4, 1),
-(2, 2, 3, 1),
-(2, 3, 4, 1),
-(2, 6, 1, 2),
-(2, 7, 4, 1),
-(3, 2, 5, 2),
-(3, 3, 1, 1),
-(3, 4, 4, 2),
-(3, 5, 5, 2),
-(3, 6, 4, 1),
-(4, 1, 4, 2),
-(4, 2, 5, 2),
-(4, 3, 4, 2),
-(4, 4, 4, 2),
-(4, 6, 4, 1),
-(4, 7, 5, 2),
-(4, 8, 4, 2),
-(5, 2, 5, 1),
-(5, 3, 2, 1),
-(5, 4, 2, 1),
-(5, 5, 1, 2),
-(5, 7, 5, 2),
-(6, 1, 4, 1),
-(6, 2, 1, 2),
-(6, 3, 3, 2),
-(6, 4, 5, 2),
-(6, 5, 3, 2),
-(6, 6, 2, 1),
-(6, 7, 1, 1),
-(6, 8, 4, 1),
-(7, 1, 2, 1),
-(7, 2, 5, 2),
-(7, 3, 4, 1),
-(7, 4, 10, 2),
-(7, 5, 4, 2),
-(7, 7, 2, 2),
-(7, 8, 3, 1),
-(8, 1, 5, 2),
-(8, 2, 1, 2),
-(8, 3, 2, 2),
-(8, 4, 1, 1),
-(8, 6, 2, 2),
-(8, 7, 3, 1),
-(8, 8, 1, 1),
-(9, 1, 3, 2),
-(9, 2, 5, 1),
-(9, 3, 1, 2),
-(9, 4, 5, 1),
-(9, 5, 4, 2),
-(9, 6, 3, 2),
-(9, 7, 3, 2),
-(9, 8, 2, 2),
-(10, 1, 3, 1),
-(10, 2, 1, 1),
-(10, 3, 2, 2),
-(10, 4, 5, 1),
-(10, 6, 4, 1),
-(10, 7, 4, 1),
-(10, 8, 3, 1),
-(12, 3, 3, 2);
+INSERT INTO tiposocios (idtiposocio, tipo_socio) VALUES
+(1, 'ouro'),
+(2, 'prata'),
+(3, 'bronze');
+
+
+--
+-- Estrutura da tabela pizzas
+--
+
+CREATE TABLE pizzas (
+  idpizzas int(11) NOT NULL,
+  sabor varchar(45) DEFAULT NULL,
+  preco float DEFAULT NULL,
+  quantidade int(11) DEFAULT NULL,
+  quantidade_critica int(11) DEFAULT '10'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela pizzas
+--
+
+INSERT INTO pizzas (idpizzas, sabor, preco, quantidade, quantidade_critica) VALUES
+(1, 'Mussarela', 40, 60, 10),
+(2, 'Calabresa', 35, 60, 10),
+(3, 'Quatro Queijos', 40, 60, 10),
+(4, 'Baiana', 45, 60, 10),
+(5, 'Portuguesa', 30, 60, 10),
+(6, 'Frango ao Catupiry', 50, 90, 10),
+(7, 'Mista de Sardinha e 4 Queijos', 50, 100, 10),
+(8, 'Italiana', 60, 50, 10),
+(9, 'Alho e Óleo', 40, 30, 10),
+(10, 'Brócolis e Peperoni', 50, 40, 10),
+(11, 'Peru ao Catupiry', 45, 50, 10),
+(12, 'Bacon', 40, 30, 5),
+(13, 'Romana', 45, 50, 5),
+(14, 'Gorgonzola', 50, 40, 5);
 
 -- --------------------------------------------------------
+
+--
+-- Estrutura da tabela socios
+--
+
+CREATE TABLE socios (
+  idsocios int(11) NOT NULL,
+  nomesocio varchar(45) NOT NULL,
+  cpf varchar(11) NOT NULL,
+  telefone varchar(15) DEFAULT NULL,
+  idtiposocio int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela socios
+--
+
+INSERT INTO socios (idsocios, nomesocio, cpf, telefone, idtiposocio) VALUES
+(1, 'Flavia', '12345', '9999-5555', 1),
+(2, 'Fernando', '23456', '8888-5555', 1),
+(3, 'Lilian', '34567', '7777-5555', 1),
+(4, 'Renato', '45678', '6666-5555', 2),
+(5, 'Rafaela', '56789', '9988-5555', 2),
+(6, 'Yasmin', '67890', '9911-5555', 3),
+(7, 'Lane', '78901', '9966-5555', 3),
+(8, 'Alisson', '89012', '9900-5555', 3),
+(9, 'John', '123423', '9888-6565', 2),
+(10, 'Guilherme', '2233445', '9765-9999', 1),
+(11, 'Shuana', '5434343', '9898-0100', 2);
+
+-- --------------------------------------------------------
+
 
 --
 -- Estrutura da tabela pedidos
@@ -229,89 +228,94 @@ INSERT INTO pedidos (idpedidos, idatendentes, idsocios, datapedido, valor_total)
 (83, 2, 4, '2016-09-10', 34);
 
 -- --------------------------------------------------------
-
 --
--- Estrutura da tabela pizzas
+-- Estrutura da tabela itens
 --
 
-CREATE TABLE pizzas (
+CREATE TABLE itens (
+  idpedidos int(10) UNSIGNED NOT NULL,
   idpizzas int(11) NOT NULL,
-  sabor varchar(45) DEFAULT NULL,
-  preco float DEFAULT NULL,
   quantidade int(11) DEFAULT NULL,
-  quantidade_critica int(11) DEFAULT '10'
+  tipo int(11) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela pizzas
+-- Extraindo dados da tabela itens
 --
 
-INSERT INTO pizzas (idpizzas, sabor, preco, quantidade, quantidade_critica) VALUES
-(1, 'Mussarela', 40, 60, 10),
-(2, 'Calabresa', 35, 60, 10),
-(3, 'Quatro Queijos', 40, 60, 10),
-(4, 'Baiana', 45, 60, 10),
-(5, 'Portuguesa', 30, 60, 10),
-(6, 'Frango ao Catupiry', 50, 90, 10),
-(7, 'Mista de Sardinha e 4 Queijos', 50, 100, 10),
-(8, 'Italiana', 60, 50, 10),
-(9, 'Alho e Óleo', 40, 30, 10),
-(10, 'Brócolis e Peperoni', 50, 40, 10),
-(11, 'Peru ao Catupiry', 45, 50, 10),
-(12, 'Bacon', 40, 30, 5),
-(13, 'Romana', 45, 50, 5),
-(14, 'Gorgonzola', 50, 40, 5);
+INSERT INTO itens (idpedidos, idpizzas, quantidade, tipo) VALUES
+(1, 1, 2, 1),
+(1, 3, 4, 2),
+(1, 4, 3, 1),
+(1, 5, 5, 1),
+(1, 6, 3, 1),
+(1, 8, 3, 1),
+(2, 1, 4, 1),
+(2, 2, 3, 1),
+(2, 3, 4, 1),
+(2, 6, 1, 2),
+(2, 7, 4, 1),
+(3, 2, 5, 2),
+(3, 3, 1, 1),
+(3, 4, 4, 2),
+(3, 5, 5, 2),
+(3, 6, 4, 1),
+(4, 1, 4, 2),
+(4, 2, 5, 2),
+(4, 3, 4, 2),
+(4, 4, 4, 2),
+(4, 6, 4, 1),
+(4, 7, 5, 2),
+(4, 8, 4, 2),
+(5, 2, 5, 1),
+(5, 3, 2, 1),
+(5, 4, 2, 1),
+(5, 5, 1, 2),
+(5, 7, 5, 2),
+(6, 1, 4, 1),
+(6, 2, 1, 2),
+(6, 3, 3, 2),
+(6, 4, 5, 2),
+(6, 5, 3, 2),
+(6, 6, 2, 1),
+(6, 7, 1, 1),
+(6, 8, 4, 1),
+(7, 1, 2, 1),
+(7, 2, 5, 2),
+(7, 3, 4, 1),
+(7, 4, 10, 2),
+(7, 5, 4, 2),
+(7, 7, 2, 2),
+(7, 8, 3, 1),
+(8, 1, 5, 2),
+(8, 2, 1, 2),
+(8, 3, 2, 2),
+(8, 4, 1, 1),
+(8, 6, 2, 2),
+(8, 7, 3, 1),
+(8, 8, 1, 1),
+(9, 1, 3, 2),
+(9, 2, 5, 1),
+(9, 3, 1, 2),
+(9, 4, 5, 1),
+(9, 5, 4, 2),
+(9, 6, 3, 2),
+(9, 7, 3, 2),
+(9, 8, 2, 2),
+(10, 1, 3, 1),
+(10, 2, 1, 1),
+(10, 3, 2, 2),
+(10, 4, 5, 1),
+(10, 6, 4, 1),
+(10, 7, 4, 1),
+(10, 8, 3, 1),
+(12, 3, 3, 2);
 
 -- --------------------------------------------------------
 
---
--- Estrutura da tabela socios
---
 
-CREATE TABLE socios (
-  idsocios int(11) NOT NULL,
-  nomesocio varchar(45) NOT NULL,
-  cpf varchar(11) NOT NULL,
-  telefone varchar(15) DEFAULT NULL,
-  idtiposocio int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela socios
---
-
-INSERT INTO socios (idsocios, nomesocio, cpf, telefone, idtiposocio) VALUES
-(1, 'Flavia', '12345', '9999-5555', 1),
-(2, 'Fernando', '23456', '8888-5555', 1),
-(3, 'Lilian', '34567', '7777-5555', 1),
-(4, 'Renato', '45678', '6666-5555', 2),
-(5, 'Rafaela', '56789', '9988-5555', 2),
-(6, 'Yasmin', '67890', '9911-5555', 3),
-(7, 'Lane', '78901', '9966-5555', 3),
-(8, 'Alisson', '89012', '9900-5555', 3),
-(9, 'John', '123423', '9888-6565', 2),
-(10, 'Guilherme', '2233445', '9765-9999', 1),
-(11, 'Shuana', '5434343', '9898-0100', 2);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela tiposocios
---
-
-CREATE TABLE tiposocios (
-  idtiposocio int(11) NOT NULL,
-  tipo_socio varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela tiposocios
---
-
-INSERT INTO tiposocios (idtiposocio, tipo_socio) VALUES
-(1, 'ouro'),
-(2, 'prata'),
-(3, 'bronze');
 
 --
 -- Indexes for dumped tables
